@@ -1,5 +1,3 @@
-
-# def calculadora2(valor1, valor2, operacao):
 def calculadora2():
     operacao = int
     while (operacao != 0):
