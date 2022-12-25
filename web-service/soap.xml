@@ -1,0 +1,34 @@
+<!--------Para criar uma estrutura web service com o protocolo SOAP é necessário criar um arquivo xml com Requisição e Resposta, com alguns elementos principais como o Envelope, o cabeçalho (cujo conteúdo pode ou não ser vazio) o corpo, onde estarão as informações referentes ao conteúdo da mensagem, conforme demonstrado abaixo---->
+
+REQUEST
+POST /consultaCliente HTTP/1.1
+Host: www.empresa.com
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length:nnn
+
+<?xml version="1.0"?>
+<soap: Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+soap:encondingStyle="URI">
+	<soap:Header/>
+	<soap:Body xmlns:m="http://www.empresa.com/consultaCliente">
+	<m:consultaClienteRequest>
+		<m:cpf>00000000000</m:cpf>
+	</m:consultaClienteRequest>
+</soap:Body>
+</soap:Envelope>
+
+RESPONSE
+HTTP/1.1 200 OK
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: nnn
+
+<?xml version="1.0"?>
+<soap:Envelope
+xmlns: soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<m:consultaClienteResponse>
+		<m:nome>Nome Cliente</m:nome>
+		<m:endereco>Rua, y, bairro</m:endereco>
+		<m:telefone>(00)00000-0000</m:telefone>
+	</m:consultaClienteResponse>
+</soap:Body>
+</soap:Envelope>
